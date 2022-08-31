@@ -1,138 +1,70 @@
-# Frontend project - read carefully.
-## Installation
+# Getting Started with Create React App
 
-You should use either `npm` or `yarn` but not both. It's recommended to use `yarn`
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-This template already comes with all the needed packages. In case you want to install manually, check the dependencies in the `package.json` file.
+## Available Scripts
 
-To install, run:
+In the project directory, you can run:
 
-```bash
-yarn install
-```
+### `yarn start`
 
-To run the project, run
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-````bash
-yarn start
-````
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-<br />
+### `yarn test`
 
-### Features that come with this template
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-* Redux
-* Redux-thunk
-* Redux-saga
-* React-router
-* TypeScript
-* Prettier
-* ESLint
-* Husky & lint-staged
+### `yarn build`
 
-<br />
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-## Requirements of the project:
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
+### `yarn eject`
 
-1. **Tech stack:**
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-   1. React
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-   2. Redux (old or Toolkit)
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-   3. TypeScript (optional **if** you are new to JS and would like to work on your JS skills)
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-   4. Styling library is your choice.
+## Learn More
 
-   5. Fork the repo and do the required changes
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-   6. if you are going to update any package, make sure it's compatible with other packages
+To learn React, check out the [React documentation](https://reactjs.org/).
 
+### Code Splitting
 
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-2. **Features you are required to implement:**
+### Analyzing the Bundle Size
 
-   1. Display countries in a table
-   2. User can:
-      1. change the theme to different color
-      2. Search a country
-      3. Filter from the countries
-      4. Link to a specific country to read more data (by a link I mean when the user clicks on a specific country row)
-      5. Add country to a cart (no duplication)
-      6. Remove a country from a cart
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-<br />
+### Making a Progressive Web App
 
-## How should you approach the assignment?
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-<br />
+### Advanced Configuration
 
-### As an individual (if you are working alone)
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-1. Make sure you don't spend too much time on a task (if you are, it means you need help or you will fall behind if you don't ask for help)
-2. **DO NOT** copy-paste a bunch of code and then try to figure out how to make it work. what you should be doing is taking it one step at a time.
-3. **MAKE SURE** to **PLAN** then execute. when you plan a feature you should visualise how it would be coded and what you need to complete it. the more time you spend on planning and thinking about the steps you should do, the easier and faster the coding would be.
-4. If you have a problem that you are trying to solve, split it into smaller problems and make sure you solve one and then move to the next one.
-5. Start with the features as the following (my recommendation if you want a plan on how to start):
-   1. theme switching
-   2. display all countries in the table
-   3. display country details on a different page (when clicking on a specific country)
-   4. Add and Remove a country from the cart
-   5. Search functionality
-   6. Filtering
-6. **Make sure** you finish a feature at a time and then commit the changes
-7. **OPEN a PR** as soon as you get your first task or feature implemented.
-8. **PUSH** to GitHub daily
+### Deployment
 
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-<br />
+### `yarn build` fails to minify
 
-### As a team
-
-1. Read all the above there are a lot of points that you should follow
-2. The group leader should send me a DM stating who are the team members
-3. You should have a leader that leads the project and helps with giving tasks
-4. Review each other's PRs and merge ONLY if it's approved by 1-2 mates. would be great if you have one person manages the PRs and provide help when needed
-5. Have a daily checkup
-6. use Trello board to manage tasks (Invite me to the board so I could track who's doing what)
-
-<br />
-
-## Do you have a problem and want quick help?
-
-Sending me/Vincent a message saying my app is broken would help **no one**.
-
-**you should have the following:**
-
-1. what are you trying to do
-2. when the problem happens at what point
-3. screenshot of the code flow
-
-<br />
-
-## Reminder
-
-* The frontend project is the most important assignment of the frontend module.
-  * I'll evaluate your project where this evaluation would go to the BD (sales) team.
-  * if you are working as a team I'll see your Trello board and follow up with your team. to make sure everyone gets the evaluation that he/she deserves.
-* There will be a frontend test (multi-choice type of questions) before starting the backend module.
-
-<br />
-
-## FAQ
-
-
-* What if I finished earlier?
-  * You can always have extra tasks; reach out to me if you need help on what to add.
-* Can I add more features?
-  * Sure you can, but first, you are required to finish the requirements
-* I'm progressing slowly! I'm stuck!
-  * Reach out to me or Vincent. (Remember you have a deadline to meet)
-* I'm not good at styling! I'm still a newbie in JS!
-  * styling could be ignored and just focus on the functionalities
-  * JS/TS is giving you a headache? book a 1on1 or keep on struggling alone😢
-* Can I know my own evaluation?
-  * this data is between me and the BD team
-  * you can still book 1on1 session with me or send me a DM where I would tell you my opinion of your tech/soft skills.
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
