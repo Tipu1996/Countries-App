@@ -1,12 +1,16 @@
 import React from 'react'
 import { HiSearch } from 'react-icons/hi'
 
-const SearchBar = () => {
+const SearchBar = (props) => {
+    let text = "";
     return (
         <form action="">
-            <input type="text" name="" id="" />
+            <input type="text" name="" id="" onChange={x => text = x.target.value} />
             <HiSearch fontSize={'1.5em'} />
-            <input type="submit" value="Submit" />
+            <input type="button" value="Submit" onClick={() => {
+                props.textChangeHandler(text)
+            }
+            } />
         </form>
     )
 }

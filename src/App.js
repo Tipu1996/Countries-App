@@ -1,10 +1,9 @@
-import React from "react";
-import "./App.css";
-//import Header from "./components/Header";
-import Table from "./components/Table";
+import React from 'react'
+import './App.css'
+import { Home } from './pages/home'
 
 function App() {
-  return <Table />;
+  return <Home></Home>
 }
 
-export default App;
+export default App

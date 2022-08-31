@@ -4,11 +4,11 @@ import SearchBar from './SearchBar'
 import Cart from './Cart'
 import ThemeBar from './ThemeBar'
 
-const Header = () => {
+const Header = (props) => {
     return (
         <div className="header">
             <ThemeBar />
-            <SearchBar />
+            <SearchBar textChangeHandler={props.textChangeHandler} />
             <Cart />
         </div>
     )
