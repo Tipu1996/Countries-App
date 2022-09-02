@@ -9,7 +9,8 @@
   ],
   "rules": {
     "no-unused-vars": [
-      "warning"
+      "error",
+      1
     ],
     "react/jsx-uses-react": "error",
     "react/jsx-uses-vars": "error"
