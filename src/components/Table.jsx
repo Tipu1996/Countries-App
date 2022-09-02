@@ -9,6 +9,7 @@ const Table = (props) => {
     useEffect(() => {
         dispatch(getCountries())
         setCountries(allCountries);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [dispatch])
 
     useEffect(() => {
@@ -19,6 +20,7 @@ const Table = (props) => {
 
     useEffect(() => {
         setCountries(allCountries.filter(x => x.name.common.includes(props.searchString)));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.searchString])
 
 
@@ -34,18 +36,19 @@ const Table = (props) => {
                     <th>Population</th>
                     <th>Region</th>
                 </tr>
+                <tbody>
+                    {countries.map((country) =>
+                        <tr>
+                            <td>{country.flag}</td>
+                            <td>{country.name.common}</td>
+                            <td>languages</td>
+                            {/* <td>{Object.values(country.languages).map(x => x)}</td> */}
+                            <td>{country.population}</td>
+                            <td>{country.region}</td>
+                        </tr>
+                    )}
+                </tbody>
             </table>
-            {countries.map((country) =>
-                <table>
-                    <tr>
-                        <td>{country.flag}</td>
-                        <td>{country.name.common}</td>
-                        <td>Languages</td>
-                        <td>{country.population}</td>
-                        <td>{country.region}</td>
-                    </tr>
-                </table>
-            )}
         </div>
     );
 }

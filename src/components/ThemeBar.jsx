@@ -1,23 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { slide as Menu } from 'react-burger-menu';
 import './ThemeBar.css';
+import ReactSwitch from 'react-switch';
+import { ThemeContext } from '../App';
 
 const ThemeBar = () => {
+    const { toggleTheme, theme } = useContext(ThemeContext)
     return (
-        <Menu>
-            <a className="menu-item" href="/">
-                Home
-            </a>
-            <a className="menu-item" href="/salads">
-                Salads
-            </a>
-            <a className="menu-item" href="/pizzas">
-                Pizzas
-            </a>
-            <a className="menu-item" href="/desserts">
-                Desserts
-            </a>
-        </Menu>
+        <div className='ThemeBar'>
+            <Menu width={'20%'}>
+                <div className='switch'>
+                    <h3>Change Theme</h3>
+                    <ReactSwitch onChange={toggleTheme} checked={theme === "light" ? false : true} />
+                </div>
+            </Menu>
+        </div>
     );
 };
 
