@@ -15,10 +15,12 @@
 
 #light {
   background-color: #f3ebf6;
+  color: black;
 }
 
 #dark {
   background-color: #46045e;
+  color: #f3ebf6;
 }
 
 .header {
