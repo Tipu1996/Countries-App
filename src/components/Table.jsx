@@ -48,8 +48,7 @@ const Table = (props) => {
                         <tr key={country.name.common}>
                             <td>{country.flag}</td>
                             <td><Link to="/Details" state={{ from: country }}>{country.name.common}</Link></td>
-                            {/* <td>languages</td> */}
-                            <td><li>{country.languages ? Object.values(country.languages).map(x => x) : "none"}</li></td>
+                            <td><ul>{country.languages ? Object.values(country.languages).map(x => <li key={x}> {x} </li>) : "none"}</ul></td>
                             <td>{country.population}</td>
                             <td>{country.region}</td>
                             <td><button onClick={handleAdd} >
