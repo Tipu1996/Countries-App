@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCountries } from '../store/countries';
+import { Link } from 'react-router-dom';
+
 
 const Table = (props) => {
     const dispatch = useDispatch()
@@ -23,28 +25,36 @@ const Table = (props) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.searchString])
 
+    const handleAdd = () => {
 
+    }
 
     return (
         <div>
             <h1>Printing</h1>
             <table>
-                <tr>
-                    <th>Flag</th>
-                    <th>Name</th>
-                    <th>Languages</th>
-                    <th>Population</th>
-                    <th>Region</th>
-                </tr>
+                <thead>
+                    <tr>
+                        <th>Flag</th>
+                        <th>Name</th>
+                        <th>Languages</th>
+                        <th>Population</th>
+                        <th>Region</th>
+                        <th></th>
+                    </tr>
+                </thead>
                 <tbody>
                     {countries.map((country) =>
-                        <tr>
+                        <tr key={country.name.common}>
                             <td>{country.flag}</td>
-                            <td>{country.name.common}</td>
-                            <td>languages</td>
-                            {/* <td>{Object.values(country.languages).map(x => x)}</td> */}
+                            <td><Link to="/Details" state={{ from: country }}>{country.name.common}</Link></td>
+                            {/* <td>languages</td> */}
+                            <td><li>{country.languages ? Object.values(country.languages).map(x => x) : "none"}</li></td>
                             <td>{country.population}</td>
                             <td>{country.region}</td>
+                            <td><button onClick={handleAdd} >
+                                ADD
+                            </button></td>
                         </tr>
                     )}
                 </tbody>

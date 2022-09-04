@@ -1,6 +1,8 @@
 import Header from '../components/Header'
 import Table from '../components/Table'
 import React, { useState } from 'react';
+import Details from './Details';
+import { Route, Routes } from 'react-router-dom'
 
 export const Home = () => {
 
@@ -12,8 +14,13 @@ export const Home = () => {
 
     return (
         <>
+
             <Header textChangeHandler={handleCountryNameFilter} />
-            <Table searchString={searchString} />
+            <Routes>
+                <Route exact path="/" element={<Table searchString={searchString} />} />
+                <Route exact path="/Details" element={<Details />} />
+            </Routes>
+            {/* <Table searchString={searchString} /> */}
         </>
     )
 }

@@ -8,8 +8,7 @@ const SearchBar = (props) => {
     return (
         <form action="">
             <input type="text" name="" id="" onChange={x => text = x.target.value} />
-            <HiSearch fontSize={'1.5em'} />
-            <input type="button" value="Submit" onClick={() => { props.textChangeHandler(text) }} />
+            <button type='submit' onClick={e => { e.preventDefault(); props.textChangeHandler(text) }}><HiSearch fontSize={'1.5em'} /></button>
         </form>
     )
 }
