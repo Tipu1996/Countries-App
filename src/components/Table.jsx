@@ -2,12 +2,15 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCountries } from '../store/countries';
 import { Link } from 'react-router-dom';
+import { addedToCart } from '../store/countries';
 
 
 const Table = (props) => {
     const dispatch = useDispatch()
     const allCountries = useSelector((state) => state.list);
+    const cartElements = useSelector((state) => state.cart);
     const [countries, setCountries] = useState([]);
+    const [cart, setCart] = useState([])
     useEffect(() => {
         dispatch(getCountries())
         setCountries(allCountries);
@@ -18,20 +21,20 @@ const Table = (props) => {
         setCountries(allCountries);
     }, [allCountries])
 
-
-
     useEffect(() => {
         setCountries(allCountries.filter(x => x.name.common.includes(props.searchString)));
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.searchString])
 
-    const handleAdd = () => {
-
-    }
+    useEffect(() => {
+        setCart(cartElements)
+        console.log("elements are: ", { cart })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [cartElements])
 
     return (
         <div>
-            <h1>Printing</h1>
+            <h1>All the Countries in the World</h1>
             <table>
                 <thead>
                     <tr>
@@ -51,7 +54,7 @@ const Table = (props) => {
                             <td><ul>{country.languages ? Object.values(country.languages).map(x => <li key={x}> {x} </li>) : "none"}</ul></td>
                             <td>{country.population}</td>
                             <td>{country.region}</td>
-                            <td><button onClick={handleAdd} >
+                            <td><button onClick={() => dispatch(addedToCart(country))} >
                                 ADD
                             </button></td>
                         </tr>

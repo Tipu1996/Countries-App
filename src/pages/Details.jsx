@@ -9,7 +9,9 @@ const Details = () => {
     return (
         <>
             <h1>Details of {from.name.common}</h1>
-            <h3>{Object.values(from.languages).map(x => x)}</h3>
+            <p>Official Name: {from.name.official}</p>
+            <p>Independent Nation: {from.independent}</p>
+            <p>Capital City: {from.capital}</p>
             <h4><Link to="/">Go Back</Link></h4>
         </>
     )

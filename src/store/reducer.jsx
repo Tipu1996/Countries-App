@@ -1,8 +1,8 @@
-import { combineReducers } from '@reduxjs/toolkit'
-import countries from './countries'
-import cart from "./cart"
+import { combineReducers } from 'redux'
+import countriesReducer from './countries'
+import cartReducer from "./cart"
 
 export default combineReducers({
-    countries,
-    cart
+    countries: countriesReducer,
+    cart: cartReducer
 })
