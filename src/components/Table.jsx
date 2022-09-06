@@ -7,7 +7,7 @@ import { addedToCart } from '../store/cart';
 
 const Table = (props) => {
     const dispatch = useDispatch()
-    const allCountries = useSelector((state) => state.countries.list);
+    let allCountries = useSelector((state) => state.countries.list);
     const [countries, setCountries] = useState([]);
     useEffect(() => {
         dispatch(getCountries())
@@ -24,7 +24,15 @@ const Table = (props) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.searchString])
 
+    const sortTable = (param) => {
+        if (param === "name") allCountries = [...countries].sort((a, b) => (a.name.common < b.name.common ? -1 : 1));
+        else if (param === "population") {
+            allCountries = [...countries].sort((a, b) => a.population > b.population ? 1 : a.population < b.population ? -1 : 0)
+        }
+        else if (param === "region") allCountries = [...countries].sort((a, b) => (a.region < b.region ? -1 : 1));
 
+        setCountries(allCountries)
+    }
 
 
     return (
@@ -34,10 +42,16 @@ const Table = (props) => {
                 <thead>
                     <tr>
                         <th>Flag</th>
-                        <th>Name</th>
+                        <th><button onClick={() => sortTable("name")} >
+                            Name
+                        </button></th>
                         <th>Languages</th>
-                        <th>Population</th>
-                        <th>Region</th>
+                        <th><button onClick={() => sortTable("population")} >
+                            Population
+                        </button></th>
+                        <th><button onClick={() => sortTable("region")} >
+                            Region
+                        </button></th>
                         <th></th>
                     </tr>
                 </thead>
