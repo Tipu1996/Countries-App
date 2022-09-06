@@ -14,13 +14,11 @@ export const Home = () => {
 
     return (
         <>
-
             <Header textChangeHandler={handleCountryNameFilter} />
             <Routes>
                 <Route exact path="/" element={<Table searchString={searchString} />} />
-                <Route exact path="/Details" element={<Details />} />
+                <Route path="/Details" element={<Details />} />
             </Routes>
-            {/* <Table searchString={searchString} /> */}
         </>
     )
 }

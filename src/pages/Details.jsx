@@ -11,7 +11,6 @@ const Details = () => {
             <h1>Details of {from.name.common}</h1>
             <p>Official Name: {from.name.official}</p>
             <p>Independent Nation: {from.independent}</p>
-            <p>Capital City: {from.capital}</p>
             <h4><Link to="/">Go Back</Link></h4>
         </>
     )

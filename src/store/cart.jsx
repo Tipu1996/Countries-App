@@ -2,17 +2,19 @@ import { createSlice } from '@reduxjs/toolkit'
 
 
 const cartSlice = createSlice({
-    name: 'countries',
-    initialState: { list: [] },
+    name: 'cart',
+    initialState: { cart: [] },
     reducers: {
-        addCountry: (state, action) => {
-            state.list.push(action.payload)
+        addedToCart: (state, { payload }) => {
+            const index = state.cart.findIndex(x => x.name.common === payload.name.common);
+            index === -1 ? state.cart.push(payload) : console.log("already added")
         },
-        removeCountry: (state, action) => {
-
+        removedFromCart: (state, { payload }) => {
+            const index = state.cart.findIndex(x => x.name.common === payload.name.common);
+            state.cart.splice(index, 1)
         }
     }
 })
 
-export const { addCountry, removeCountry } = cartSlice.actions
+export const { addedToCart, removedFromCart } = cartSlice.actions
 export default cartSlice.reducer

@@ -1,15 +1,21 @@
 import React from 'react'
-//import ThemeSideBar from './ThemeSideBar'
+import { Route, Routes } from 'react-router-dom'
 import SearchBar from './SearchBar'
 import Cart from './Cart'
+import CartPage from "../pages/CartPage"
 import ThemeBar from './ThemeBar'
 
 const Header = (props) => {
     return (
-        <div className="header">
-            <ThemeBar />
-            <SearchBar textChangeHandler={props.textChangeHandler} />
-            <Cart />
+        <div>
+            <div className="header">
+                <ThemeBar />
+                <SearchBar textChangeHandler={props.textChangeHandler} />
+                <Cart />
+            </div>
+            <Routes>
+                <Route path="/CartPage" element={<CartPage />} />
+            </Routes>
         </div>
     )
 }

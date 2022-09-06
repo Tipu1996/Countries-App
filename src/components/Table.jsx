@@ -2,15 +2,13 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCountries } from '../store/countries';
 import { Link } from 'react-router-dom';
-import { addedToCart } from '../store/countries';
+import { addedToCart } from '../store/cart';
 
 
 const Table = (props) => {
     const dispatch = useDispatch()
-    const allCountries = useSelector((state) => state.list);
-    const cartElements = useSelector((state) => state.cart);
+    const allCountries = useSelector((state) => state.countries.list);
     const [countries, setCountries] = useState([]);
-    const [cart, setCart] = useState([])
     useEffect(() => {
         dispatch(getCountries())
         setCountries(allCountries);
@@ -26,11 +24,8 @@ const Table = (props) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.searchString])
 
-    useEffect(() => {
-        setCart(cartElements)
-        console.log("elements are: ", { cart })
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [cartElements])
+
+
 
     return (
         <div>

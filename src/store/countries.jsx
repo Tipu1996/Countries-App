@@ -12,18 +12,13 @@ export const getCountries = createAsyncThunk(
 
 const slice = createSlice({
     name: 'countries',
-    initialState: { list: [], status: null, cart: [] },
-    reducers: {
-        addedToCart: (state, action) => {
-            state.cart.push(action.payload)
-        }
-    },
+    initialState: { list: [], status: null/*, cart: []*/ },
     extraReducers: {
         [getCountries.pending]: (state) => {
             state.status = "loading"
         },
-        [getCountries.fulfilled]: (state, { payload }) => {
-            state.list = payload
+        [getCountries.fulfilled]: (state, action) => {
+            state.list = action.payload
             state.status = "success"
         },
         [getCountries.rejected]: (state) => {
@@ -32,6 +27,5 @@ const slice = createSlice({
     },
 })
 
-export const { addedToCart } = slice.actions
 
 export default slice.reducer
