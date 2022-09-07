@@ -75,7 +75,11 @@ const Table = (props: { searchString: string }) => {
             <tr key={country.name.common}>
               <td>{country.flag}</td>
               <td>
-                <Link to="/Details" state={{ from: country }}>
+                <Link
+                  to="/Details"
+                  state={{ from: country }}
+                  style={{ textDecoration: 'none', color: 'inherit' }}
+                >
                   {country.name.common}
                 </Link>
               </td>
