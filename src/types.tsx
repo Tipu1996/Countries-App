@@ -10,3 +10,12 @@ export type Country = {
   population: number
   region: string
 }
+
+export type SearchHandler = {
+  handleCountryNameFilter: (name: string) => void
+}
+
+export type ThemeContextType = {
+  toggleTheme: () => void
+  theme: string
+}
