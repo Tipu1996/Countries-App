@@ -16,7 +16,9 @@ export const getCountries = createAsyncThunk(
   'countries/getCountries',
   async () => {
     return axios
-      .get('https://restcountries.com/v3.1/all')
+      .get(
+        'https://restcountries.com/v2/all?fields=name,flag,languages,population,region'
+      )
       .then((response) => response.data)
   }
 )
