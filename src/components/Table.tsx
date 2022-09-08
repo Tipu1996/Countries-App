@@ -2,20 +2,18 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getCountries } from '../store/countries'
 import { Link } from 'react-router-dom'
-import { addedToCart } from '../store/cart'
 import { Country } from '../types'
 import type { RootState, AppDispatch } from '../store/configureStore'
 import {
   sortCountryName,
   sortCountryPopulaion,
   sortCountryRegion,
+  addedToCart,
 } from '../store/countries'
 
 const Table = () => {
   const dispatch = useDispatch<AppDispatch>()
-  let allCountries: Country[] = useSelector(
-    (state: RootState) => state.countries.list
-  )
+  let allCountries: Country[] = useSelector((state: RootState) => state.list)
   useEffect(() => {
     dispatch(getCountries())
   }, [dispatch])

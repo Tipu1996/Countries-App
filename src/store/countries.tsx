@@ -5,6 +5,7 @@ import { Country } from '../types'
 export interface countriesState {
   list: Country[]
   refList: Country[]
+  cart: Country[]
   status: string
   sortName: boolean
   sortPopulation: boolean
@@ -14,6 +15,7 @@ export interface countriesState {
 const initialState: countriesState = {
   list: [],
   refList: [],
+  cart: [],
   status: '',
   sortName: false,
   sortPopulation: false,
@@ -97,6 +99,18 @@ const slice = createSlice({
         state.list = sortedCountries
       }
     },
+    addedToCart: (state, { payload }) => {
+      const index = state.cart.findIndex(
+        (x) => x.name.common === payload.name.common
+      )
+      index === -1 ? state.cart.push(payload) : console.log('already added')
+    },
+    removedFromCart: (state, { payload }) => {
+      const index = state.cart.findIndex(
+        (x) => x.name.common === payload.name.common
+      )
+      state.cart.splice(index, 1)
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(getCountries.pending, (state) => {
@@ -119,6 +133,8 @@ export const {
   sortCountryPopulaion,
   sortCountryRegion,
   handleSearch,
+  addedToCart,
+  removedFromCart,
 } = slice.actions
 
 export default slice.reducer
