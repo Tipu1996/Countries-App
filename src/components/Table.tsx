@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getCountries } from '../store/countries'
 import { Link } from 'react-router-dom'
@@ -16,16 +16,9 @@ const Table = () => {
   let allCountries: Country[] = useSelector(
     (state: RootState) => state.countries.list
   )
-  const [countries, setCountries] = useState<Country[]>([])
   useEffect(() => {
     dispatch(getCountries())
-    setCountries(allCountries)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch])
-
-  useEffect(() => {
-    setCountries(allCountries)
-  }, [allCountries])
 
   const handleNameSorting = () => {
     dispatch(sortCountryName(allCountries))
@@ -60,7 +53,7 @@ const Table = () => {
           </tr>
         </thead>
         <tbody>
-          {countries.map((country) => (
+          {allCountries.map((country) => (
             <tr key={country.name.common}>
               <td>{country.flag}</td>
               <td>
