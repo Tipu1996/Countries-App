@@ -4,6 +4,7 @@ import { Country } from '../types'
 
 export interface countriesState {
   list: Country[]
+  refList: Country[]
   status: string
   sortName: boolean
   sortPopulation: boolean
@@ -12,6 +13,7 @@ export interface countriesState {
 
 const initialState: countriesState = {
   list: [],
+  refList: [],
   status: '',
   sortName: false,
   sortPopulation: false,
@@ -33,6 +35,17 @@ const slice = createSlice({
   name: 'countries',
   initialState,
   reducers: {
+    handleSearch: (state, action) => {
+      const searchItem = action.payload.toLowerCase()
+      const filterCountries = state.refList.filter((country) => {
+        const name = country.name.common.toLowerCase()
+        if (name.startsWith(searchItem)) {
+          return country
+        }
+        return false
+      })
+      state.list = filterCountries
+    },
     sortCountryName: (state, action) => {
       const list = action.payload
       if (!state.sortName) {
@@ -91,6 +104,7 @@ const slice = createSlice({
     })
     builder.addCase(getCountries.fulfilled, (state, action) => {
       state.list = action.payload
+      state.refList = action.payload
       state.status = 'success'
     })
     builder.addCase(getCountries.rejected, (state) => {
@@ -100,7 +114,11 @@ const slice = createSlice({
   },
 })
 
-export const { sortCountryName, sortCountryPopulaion, sortCountryRegion } =
-  slice.actions
+export const {
+  sortCountryName,
+  sortCountryPopulaion,
+  sortCountryRegion,
+  handleSearch,
+} = slice.actions
 
 export default slice.reducer

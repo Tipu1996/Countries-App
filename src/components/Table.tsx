@@ -11,7 +11,7 @@ import {
   sortCountryRegion,
 } from '../store/countries'
 
-const Table = (props: { searchString: string }) => {
+const Table = () => {
   const dispatch = useDispatch<AppDispatch>()
   let allCountries: Country[] = useSelector(
     (state: RootState) => state.countries.list
@@ -26,15 +26,6 @@ const Table = (props: { searchString: string }) => {
   useEffect(() => {
     setCountries(allCountries)
   }, [allCountries])
-
-  useEffect(() => {
-    setCountries(
-      allCountries.filter((x: Country) =>
-        x.name.common.includes(props.searchString)
-      )
-    )
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.searchString])
 
   const handleNameSorting = () => {
     dispatch(sortCountryName(allCountries))

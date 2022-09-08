@@ -4,14 +4,13 @@ import SearchBar from './SearchBar'
 import Cart from './Cart'
 import CartPage from '../pages/CartPage'
 import ThemeBar from './ThemeBar'
-import { SearchHandler } from '../types'
 
-const Header = (props: SearchHandler) => {
+const Header = () => {
   return (
     <div>
       <div className="header">
         <ThemeBar />
-        <SearchBar handleCountryNameFilter={props.handleCountryNameFilter} />
+        <SearchBar />
         <Cart />
       </div>
       <Routes>
