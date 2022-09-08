@@ -5,6 +5,11 @@ import { Link } from 'react-router-dom'
 import { addedToCart } from '../store/cart'
 import { Country } from '../types'
 import type { RootState, AppDispatch } from '../store/configureStore'
+import {
+  sortCountryName,
+  sortCountryPopulaion,
+  sortCountryRegion,
+} from '../store/countries'
 
 const Table = (props: { searchString: string }) => {
   const dispatch = useDispatch<AppDispatch>()
@@ -31,21 +36,14 @@ const Table = (props: { searchString: string }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.searchString])
 
-  const sortTable = (param: string) => {
-    if (param === 'name')
-      allCountries = [...countries].sort((a, b) =>
-        a.name.common < b.name.common ? -1 : 1
-      )
-    else if (param === 'population') {
-      allCountries = [...countries].sort((a, b) =>
-        a.population > b.population ? 1 : a.population < b.population ? -1 : 0
-      )
-    } else if (param === 'region')
-      allCountries = [...countries].sort((a, b) =>
-        a.region < b.region ? -1 : 1
-      )
-
-    setCountries(allCountries)
+  const handleNameSorting = () => {
+    dispatch(sortCountryName(allCountries))
+  }
+  const handlePopulationSorting = () => {
+    dispatch(sortCountryPopulaion(allCountries))
+  }
+  const handleRegionSorting = () => {
+    dispatch(sortCountryRegion(allCountries))
   }
 
   return (
@@ -56,16 +54,16 @@ const Table = (props: { searchString: string }) => {
           <tr>
             <th>Flag</th>
             <th>
-              <button onClick={() => sortTable('name')}>Name</button>
+              <button onClick={() => handleNameSorting()}>Name</button>
             </th>
             <th>Languages</th>
             <th>
-              <button onClick={() => sortTable('population')}>
+              <button onClick={() => handlePopulationSorting()}>
                 Population
               </button>
             </th>
             <th>
-              <button onClick={() => sortTable('region')}>Region</button>
+              <button onClick={() => handleRegionSorting()}>Region</button>
             </th>
             <th></th>
           </tr>
