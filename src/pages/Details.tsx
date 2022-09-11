@@ -22,7 +22,7 @@ const Details = () => {
       >
         <Card
           sx={{
-            minWidth: '90%',
+            minWidth: '350px',
             width: '50%',
             marginTop: '7%',
           }}
