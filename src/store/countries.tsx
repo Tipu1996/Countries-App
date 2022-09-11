@@ -6,6 +6,7 @@ export interface countriesState {
   list: Country[]
   refList: Country[]
   cart: Country[]
+  numberInCart: number
   status: string
   sortName: boolean
   sortPopulation: boolean
@@ -16,6 +17,7 @@ const initialState: countriesState = {
   list: [],
   refList: [],
   cart: [],
+  numberInCart: 0,
   status: '',
   sortName: false,
   sortPopulation: false,
@@ -27,7 +29,7 @@ export const getCountries = createAsyncThunk(
   async () => {
     return axios
       .get(
-        'https://restcountries.com/v3.1/all?fields=name,languages,capital,flag,population,region'
+        'https://restcountries.com/v3.1/all?fields=name,languages,capital,flags,population,region,currencies,capital,maps,coatOfArms'
       )
       .then((response) => response.data)
   }
@@ -104,13 +106,18 @@ const slice = createSlice({
         (x) => x.name.common === payload.name.common
       )
       index === -1 ? state.cart.push(payload) : console.log('already added')
+      state.numberInCart++
     },
     removedFromCart: (state, { payload }) => {
       const index = state.cart.findIndex(
         (x) => x.name.common === payload.name.common
       )
       state.cart.splice(index, 1)
+      state.numberInCart--
     },
+    // checkedInCart: (state, { payload }) => {
+    //   state.cart.some((country) => payload === country)
+    // },
   },
   extraReducers: (builder) => {
     builder.addCase(getCountries.pending, (state) => {
@@ -120,6 +127,7 @@ const slice = createSlice({
       state.list = action.payload
       state.refList = action.payload
       state.status = 'success'
+      // console.log(Object.values(state.list[0].currencies))
     })
     builder.addCase(getCountries.rejected, (state) => {
       console.log('Something went wrong')
@@ -135,6 +143,7 @@ export const {
   handleSearch,
   addedToCart,
   removedFromCart,
+  // checkedInCart,
 } = slice.actions
 
 export default slice.reducer

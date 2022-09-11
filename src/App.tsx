@@ -1,30 +1,40 @@
 import './App.css'
 import { Home } from './pages/Home'
-import { ThemeContextType } from './types'
-import { createContext } from 'react'
-import { useState } from 'react'
+import { ThemeProvider, createTheme } from '@mui/material/styles'
+import { createContext, useMemo, useState } from 'react'
+import { CssBaseline } from '@mui/material'
 
-export const ThemeContext = createContext<ThemeContextType>(
-  {} as ThemeContextType
-)
+export const ColorModeContext = createContext({ toggleColorMode: () => {} })
 
-function App() {
-  const [theme, setTheme] = useState('dark')
-  const toggleTheme = () => {
-    setTheme((curr) => (curr === 'light' ? 'dark' : 'light'))
-  }
+const App = () => {
+  const [mode, setMode] = useState<'light' | 'dark'>('dark')
+  const colorMode = useMemo(
+    () => ({
+      toggleColorMode: () => {
+        setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'))
+      },
+    }),
+    []
+  )
 
-  const context: ThemeContextType = {
-    toggleTheme,
-    theme,
-  }
+  const theme = useMemo(
+    () =>
+      createTheme({
+        palette: {
+          mode,
+        },
+      }),
+    [mode]
+  )
+  console.log(theme)
 
   return (
-    <ThemeContext.Provider value={context}>
-      <div id={theme}>
+    <ColorModeContext.Provider value={colorMode}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
         <Home />
-      </div>
-    </ThemeContext.Provider>
+      </ThemeProvider>
+    </ColorModeContext.Provider>
   )
 }
 
