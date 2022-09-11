@@ -105,8 +105,10 @@ const slice = createSlice({
       const index = state.cart.findIndex(
         (x) => x.name.common === payload.name.common
       )
-      index === -1 ? state.cart.push(payload) : console.log('already added')
-      state.numberInCart++
+      if (index === -1) {
+        state.cart.push(payload)
+        state.numberInCart++
+      } else console.log('already added')
     },
     removedFromCart: (state, { payload }) => {
       const index = state.cart.findIndex(
